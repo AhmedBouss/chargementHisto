@@ -65,9 +65,9 @@ for element in os.listdir('data'):
 			ETD.rechercher("Update OPT set Date_valid_PE = " + "'" + str(liste[20]) + "'" + " where code_IMB = " + "'" + liste[0] + "'")
 			ETD.rechercher("Update OPT set NB_EL_P = " + "'" + str(liste[21]) + "'" + " where code_IMB = " + "'" + liste[0] + "'")
 			ETD.rechercher("Update OPT set NB_EL_R = " + "'" + str(liste[22]) + "'" + " where code_IMB = " + "'" + liste[0] + "'")
-			ETD.rechercher("Update OPT set Type_Site = " + "'" + liste[23] + "'" + " where code_IMB = " + "'" + liste[0] + "'")
-			# ETD.rechercher("Update OPT set Suspension = " + "'" + liste[24] + "'" + " where code_IMB = " + "'" + liste[0] + "'")
-			# ETD.rechercher("Update OPT set Type_suspension = " + "'" + liste[25] + "'" + " where code_IMB = " + "'" + liste[0] + "'")
+			ETD.rechercher("Update OPT set Type_Site = " + "\"" + liste[23] + "\"" + " where code_IMB = " + "'" + liste[0] + "'")
+			ETD.rechercher("Update OPT set Suspension = " + "\"" + liste[24] + "\"" + " where code_IMB = " + "'" + liste[0] + "'")
+			ETD.rechercher("Update OPT set Type_suspension = " + "\"" + liste[25] + "\"" + " where code_IMB = " + "\"" + liste[0] + "\"")
 
 
 		ETD.rechercher("Update OPT set AG_non_pertinente = '0-AG pertinente' where AG_non_pertinente = 'Non'")

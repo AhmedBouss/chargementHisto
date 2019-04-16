@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 import bddSqlite
 from req import *
-import exportExcelNEG
-import exportExcelETD
 from mesRequetesNEG import *
 from mesRequetesETD import *
 import os

@@ -47,8 +47,8 @@ for element in os.listdir('data'):
 			ETD.rechercher("Update C set Resultat_etude_site = " + "'" + liste[30] + "'" + " where code_IMB = " + "'" + liste[0] + "'")
 			ETD.rechercher("Update C set Date_prog_racco = " + "'" + str(liste[31]) + "'" + " where code_IMB = " + "'" + liste[0] + "'")
 			ETD.rechercher("Update C set Date_pose_PB = " + "'" + str(liste[32]) + "'" + " where code_IMB = " + "'" + liste[0] + "'")
-			ETD.rechercher("Update C set Suspendre = " + "'" + liste[33] + "'" + " where code_IMB = " + "'" + liste[0] + "'")
-			ETD.rechercher("Update C set Type_suspension = " + "'" + liste[34] + "'" + " where code_IMB = " + "'" + liste[0] + "'")
+			ETD.rechercher("Update C set Suspendre = " + "\""+ liste[33] + "\"" + " where code_IMB = " + "'" + liste[0] + "'")
+			ETD.rechercher("Update C set Type_suspension = " + "\"" + liste[34] + "\"" + " where code_IMB = " + "'" + liste[0] + "'")
 
 
 		ETD.rechercher("Update C set AG_non_pertinente = '0-AG pertinente' where AG_non_pertinente = 'Non'")
