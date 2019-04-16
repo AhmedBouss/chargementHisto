@@ -421,3 +421,6 @@ if 1 :
   datefin = datetime(newdate.year, newdate.month, newdate.day, 0, 0, 0)
 
   DPL = (datefin - debut).days + 2
+
+
+#  ceci est un test git 
