@@ -93,13 +93,13 @@ tfx1 = "update tbl set TFX = '0' where Code_IMB not in  (select code_imb from SP
 
 
 
-suspension_nego = "select SPI.code_imb, '' Adresse, '' Localite, 'MIG pb SI Traitement asynchrone Admin SI', 'Erreur 1-' || tbl.qualif_nego || '-' || tbl.probation || '-' || tbl.bpt || '-0'  from SPI, tbl where \
+suspension_nego = "select SPI.code_imb, 'MIG pb SI Traitement asynchrone Admin SI', 'Erreur 1-' || tbl.qualif_nego || '-' || tbl.probation || '-' || tbl.bpt || '-0'  from SPI, tbl where \
 (action = 'Qualif Négo' and SPI.statut in('Qualifié', 'En attente prev accord') \
 OR action = 'Probation' and SPI.statut in('Qualifié', 'En attente prev accord', 'En attente accord Syndic', 'En attente BPE') \
 OR action = 'Obtention BPT' and SPI.statut in('Qualifié', 'En attente prev accord', 'En attente accord Syndic', 'En attente BPE', 'En attente BPT')) \
 and spi.code_imb = tbl.code_imb and SPI.ID_ZN <> 'SO' \
 UNION \
-select code_imb, '' Adresse, '' Localite, 'MIG pb SI Traitement asynchrone Admin SI', Erreur from NEG where Erreur <> '' and ID_ZN <> 'SO'"
+select code_imb, 'MIG pb SI Traitement asynchrone Admin SI', Erreur from NEG where Erreur <> '' and ID_ZN <> 'SO'"
 
 
 commentaire_nego = "select 'CODE IMB', SPI.code_imb, SPI.ID_ZN, '' Date_commentaire, 'SUPNEG_CLA_PIL_02', 'Erreur 1-' || tbl.qualif_nego || '-' || tbl.probation || '-' || tbl.bpt || '-0'  from SPI, tbl where \
@@ -112,19 +112,19 @@ select 'CODE IMB', code_imb, ID_ZN, '' Date_commentaire, 'ADMIN_IXIN', Erreur fr
 
 
 
-suspension_etude = "select distinct SPI_ZE.code_imb, '' Adresse, SPI_ZE.Plaque, '' centre_etd, '' Localite, 'MIG pb SI Traitement asynchrone Admin SI', \
+suspension_etude = "select distinct SPI_ZE.code_imb, SPI_ZE.Plaque, 'MIG pb SI Traitement asynchrone Admin SI', \
 'Erreur 2-' || tbl.etude || '-' || tbl.TL || '-' || tbl.DOE || '-' || tbl.TFX || '-0'  from SPI_ZE, tbl \
 where SPI_ZE.code_imb = tbl.code_imb and SPI_ZE.statut not in ('DOE réalisée', 'Non existant IXIETUDES', 'Non existant IXINEGO', 'ZN terminée') \
 UNION \
-select SPI.code_imb, '' Adresse, SPI.Plaque, '' centre_etd, '' Localite, 'MIG pb SI Traitement asynchrone Admin SI', 'Erreur 120'  from SPI,  tbl \
+select SPI.code_imb, SPI.Plaque, 'MIG pb SI Traitement asynchrone Admin SI', 'Erreur 120'  from SPI,  tbl \
 where (SPI.ID_ZE in (select ID_ZE from spi_ze) and SPI.code_imb not in (select SPI_ZE.code_imb from spi_ze)) \
 and SPI.code_imb = tbl.code_imb and SPI.statut not in ('DOE réalisée', 'Non existant IXIETUDES', 'Non existant IXINEGO', 'ZN terminée') \
 UNION \
-select code_imb, '' Adresse, Plaque, '' centre_etd, '' Localite, 'MIG pb SI Traitement asynchrone Admin SI', Erreur from ETD where Erreur <> '' \
+select code_imb, Plaque, 'MIG pb SI Traitement asynchrone Admin SI', Erreur from ETD where Erreur <> '' \
 UNION \
-select code_imb, '' Adresse, Plaque, '' centre_etd, '' Localite, 'MIG pb SI Traitement asynchrone Admin SI', 'Erreur 120' from ETD2 where ID_ZE in (select ID_ZE from ETD where erreur <> '') \
+select code_imb, Plaque, 'MIG pb SI Traitement asynchrone Admin SI', 'Erreur 120' from ETD2 where ID_ZE in (select ID_ZE from ETD where erreur <> '') \
 UNION \
-select code_imb, '' Adresse, Plaque, '' centre_etd, '' Localite, 'MIG pb SI Traitement asynchrone Admin SI', 'Erreur 120' from ETD2 where ID_ZE in (select ID_ZE from SPI_ZE)"
+select code_imb, Plaque, 'MIG pb SI Traitement asynchrone Admin SI', 'Erreur 120' from ETD2 where ID_ZE in (select ID_ZE from SPI_ZE)"
 
 
 etd_ze = "update ETD set erreur = 'Erreur 120' where ID_ZE in (select ID_ZE from ETD where Erreur <> '') and Erreur = '' and statut not in ('DOE réalisée', 'Non existant IXIETUDES', 'Non existant IXINEGO', 'ZN terminée') "
@@ -139,13 +139,13 @@ and spi.code_imb = tbl.code_imb and SPI.statut not in ('DOE réalisée', 'Non ex
 # Suspension pour MaJ RGT en retard - Erreur 120
 
 
-cem_opt_zn = "select distinct SPI.ID_ZN, 'CEM OPT'  from SPI, tbl where \
+cem_opt_zn = "select distinct SPI.Code_IMB, SPI.ID_ZN, 'CEM OPT'  from SPI, tbl where \
 (action = 'Qualif Négo' and SPI.statut in('Qualifié', 'En attente prev accord')  \
 OR action = 'Probation' and SPI.statut in('Qualifié', 'En attente prev accord', 'En attente accord Syndic', 'En attente BPE')  \
 OR action = 'Obtention BPT' and SPI.statut in('Qualifié', 'En attente prev accord', 'En attente accord Syndic', 'En attente BPE', 'En attente BPT'))  \
 and spi.code_imb = tbl.code_imb and SPI.ID_ZN <> 'SO'  \
 UNION  \
-select distinct ID_ZN, 'CEM OPT' from NEG where Erreur <> '' and ID_ZN <> 'SO' "
+select distinct Code_IMB, ID_ZN, 'CEM OPT' from NEG where Erreur <> '' and ID_ZN <> 'SO' "
 
 cem_opt_ze = "select distinct SPI_ZE.ID_ZE, 'CEM OPT' from SPI_ZE, tbl \
 where SPI_ZE.code_imb = tbl.code_imb and SPI_ZE.statut not in ('DOE réalisée', 'Non existant IXIETUDES', 'Non existant IXINEGO', 'ZN terminée') \

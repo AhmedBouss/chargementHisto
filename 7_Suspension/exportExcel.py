@@ -18,7 +18,7 @@ class ajoutClasseur :
 		
 		self.feuille = self.classeur.add_worksheet(feuille)
 		
-		self.feuille.autofilter('A3:G3')
+		self.feuille.autofilter('A3:D3')
 		self.feuille.hide_gridlines(2)
 		self.feuille.set_column(0, 4, 21)
 		self.feuille.set_column(5, 6, 40)
@@ -34,19 +34,16 @@ class ajoutClasseur :
 		self.feuille.write('F1', None, formatCellule)
 
 		self.feuille.write('A3', 'Code IMB', formatFichier)
-		self.feuille.write('B3', 'Adresse', formatFichier)
-		self.feuille.write('C3', 'Code plaque', formatFichier)
-		self.feuille.write('D3', 'Centre études', formatFichier)
-		self.feuille.write('E3', 'Localité', formatFichier)
-		self.feuille.write('F3', 'Type Suspension', formatFichier)
-		self.feuille.write('G3', 'Commentaire suspension', formatFichier)
+		self.feuille.write('B3', 'Code plaque', formatFichier)
+		self.feuille.write('C3', 'Type Suspension', formatFichier)
+		self.feuille.write('D3', 'Commentaire suspension', formatFichier)
 
 
 	def ajoutOnglet_SuspendreN(self, classeur, feuille):
 		
 		self.feuille = self.classeur.add_worksheet(feuille)
 		
-		self.feuille.autofilter('A3:E3')
+		self.feuille.autofilter('A3:C3')
 		self.feuille.hide_gridlines(2)
 		self.feuille.set_column(0, 6, 31)
 		
@@ -61,10 +58,8 @@ class ajoutClasseur :
 		self.feuille.write('F1', None, formatCellule)
 
 		self.feuille.write('A3', 'Code IMB', formatFichier)
-		self.feuille.write('B3', 'Adresse', formatFichier)
-		self.feuille.write('C3', 'Localité', formatFichier)
-		self.feuille.write('D3', 'Type suspension', formatFichier)
-		self.feuille.write('E3', 'Commentaire suspension', formatFichier)
+		self.feuille.write('B3', 'Type suspension', formatFichier)
+		self.feuille.write('C3', 'Commentaire suspension', formatFichier)
 
 
 	def ajoutOnglet_Commentaire(self, classeur, feuille):
@@ -205,16 +200,17 @@ class ajoutClasseur :
 		
 		self.feuille = self.classeur.add_worksheet(feuille)
 		
-		self.feuille.autofilter('A3:B3')
+		self.feuille.autofilter('A3:C3')
 		self.feuille.hide_gridlines(2)
 		self.feuille.set_column(0, 6, 31)
 		
 		formatCellule = self.classeur.add_format({'border': True, 'align' : 'bottom', 'text_wrap': 'True'})
 	 
 		formatFichier = self.classeur.add_format({'border': True, 'font_color': 'white', 'bg_color': '#0066CC', 'align' : 'center'})
-		 
-		self.feuille.write('A3', 'ID ZN', formatFichier)
-		self.feuille.write('B3', 'Type processus', formatFichier)
+		
+		self.feuille.write('A3', 'Code IMB', formatFichier)
+		self.feuille.write('B3', 'ID ZN', formatFichier)
+		self.feuille.write('C3', 'Type processus', formatFichier)
 
 	def ajoutOnglet_CEM_OPT_ZE(self, classeur, feuille):
 		
