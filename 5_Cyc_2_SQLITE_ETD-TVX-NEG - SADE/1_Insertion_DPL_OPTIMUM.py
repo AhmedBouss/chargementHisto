@@ -46,20 +46,30 @@ else:
 		exit()
 
 if DPL <= Dep:
+	print("\x1b[2;41;77mSelectionner le type d'ingénierie de la plaque 1:ZTD HD\x1b[0m")
+	print("\x1b[2;41;77m                                               2:ZMD-ZTD BD\x1b[0m")
 
-	ING = input("Entrer le type d'ingénierie de la plaque ZTD ou ZMD : ")
+	ING = input("Valeur 1 ou 2 : ")
 
-	if ING not in ('ZTD', 'ZMD') :
+	if ING not in ('1', '2') :
 		print("Choix incorrect")
 		exit()
 
 	else:
 
-		print("--------------------------------------------------------------------------------")
-		print("Type d'ingénierie :", ING)
-		print("--------------------------------------------------------------------------------")
+		if ING == '1' :
 
-	if ING	in ('ZTD'):
+			print("--------------------------------------------------------------------------------")
+			print("Type d'ingénierie : ZTD HD ")
+			print("--------------------------------------------------------------------------------")
+
+		elif ING == '2' :
+
+			print("--------------------------------------------------------------------------------")
+			print("Type d'ingénierie : ZMD-ZTD BD ")
+			print("--------------------------------------------------------------------------------")
+
+	if ING	in ('1'):
 		print("Le PM sera pris en compte pour la définition des ensembles et des regroupements - un fichier admin_PA sera généré ")
 		print("--------------------------------------------------------------------------------")
 
@@ -106,7 +116,13 @@ if DPL <= Dep:
 
 	ETD = bddSqlite.BaseSqlite()
 
-	ETD.rechercher("Update OPT set Table_etd = " + "'" + ING + "'")
+	if ING == '1' :
+
+		ETD.rechercher("Update OPT set Table_etd = 'ZTD HD' ")
+
+	elif ING == '2' :
+		ETD.rechercher("Update OPT set Table_etd = 'ZMD-ZTD BD' ")
+		
 	ETD.rechercher("Update OPT set plaque = " + "'" + num_plaque + "'")
 
 	ETD.rechercher("Update OPT set PA = '' where PA = 'N.D.'")
@@ -152,7 +168,7 @@ if DPL <= Dep:
 
 	
 
-	if ING == 'ZTD':
+	if ING == '1':
 		ETD.rechercher("Update OPT set PA = PM ")
 
 

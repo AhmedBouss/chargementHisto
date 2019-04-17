@@ -477,7 +477,7 @@ if DPL <= Dep:
 	ETD.rechercher("select table_etd from OPT limit 1")
 	v = ETD.resultat()[0][0]
 
-	if v == 'ZTD' :
+	if v == 'ZTD HD' :
 
 		admin_pa = exportExcelETD.ajoutClasseur("Admin PA")
 		admin_pa.ajoutOnglet_Admin_PA("Admin PA", "Admin PA")
