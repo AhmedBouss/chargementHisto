@@ -1,0 +1,5 @@
+select code_IMB, adduction_pb_vers_EL, PT_IPON, commentaire_RGT, Conducteur_de_travaux from OPT
+
+select code_IMB, 'Commentaire AS : ' || adduction_pb_vers_EL || ' / Commentaire BPT n°1 : ' || PT_IPON || ' / Commentaire BPT n°2 : ' || commentaire_RGT || ' / Commentaire BPT n°2 : ' || Conducteur_de_travaux from COM
+where adduction_pb_vers_EL <> '' OR PT_IPON <> '' OR commentaire_RGT <> '' OR  Conducteur_de_travaux <> ''
+
