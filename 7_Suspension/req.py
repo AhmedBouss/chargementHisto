@@ -407,7 +407,7 @@ stock_non_deb_el = "select ifnuLL(sum(NB_EL),0) from (select * from B2 UNION sel
 
 if 1 :
   from urllib.request import urlopen
-  Dep = 43588
+  Dep = 43607
   debut = datetime(1900, 1, 1, 0, 0, 0)
 
   res = urlopen('http://www.python.org')

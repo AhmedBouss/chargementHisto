@@ -2,6 +2,7 @@
 import bddSqlite
 import exportExcelETD
 from mesRequetesNEG import *
+from req import *
 
 import os
 
@@ -38,6 +39,7 @@ else:
 		print("")
 		print("------------------------------------------------------------------------------------")
 		exit()
+
 
 if DPL <= Dep:
 
